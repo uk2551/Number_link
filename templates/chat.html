@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gray-800 text-center py-4 shadow-md flex justify-between px-6">
+    <h1 class="text-xl font-semibold text-white">🧠 Question {{ index }}/10</h1>
+    <span class="text-sm text-green-400 font-mono">😺 Quiz</span>
+  </header>
+
+  <!-- Chat Container -->
+  <main class="flex-1 overflow-y-auto px-4 py-6 space-y-6 max-w-md w-full mx-auto">
+    
+    <!-- Question bubble -->
+    <div class="flex justify-start">
+      <div class="bg-gray-700/80 backdrop-blur-md rounded-2xl px-5 py-3 text-white shadow-md max-w-sm">
+        {{ question['question'] }}
+      </div>
+    </div>
+
+    <!-- Answer buttons -->
+    <form method="POST" class="flex flex-col space-y-3">
+      {% for opt in question['options'] %}
+        <button type="submit" name="answer" value="{{ opt }}"
+          class="bg-blue-600 hover:bg-blue-700 transition-all duration-150 px-4 py-3 rounded-xl shadow hover:scale-105 text-left text-white font-medium">
+          {{ opt }}
+        </button>
+      {% endfor %}
+    </form>
+  </main>
+</body>
+</html>
